@@ -1,0 +1,160 @@
+:root {
+  --cream: #f7f4ea;
+  --paper: #fffdf6;
+  --rust: #b33a0d;
+  --red: #c5230d;
+  --mustard: #b69b18;
+  --sand: #caa78f;
+  --ink: #11100e;
+  --radius: 18px;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  color: var(--ink);
+  background: var(--cream);
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.45;
+}
+a { color: inherit; }
+
+.hero { min-height: 100vh; padding: 24px clamp(22px, 5vw, 78px) 34px; display: flex; flex-direction: column; }
+.nav { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+.brand { font: 900 1.1rem/1 Arial, sans-serif; text-decoration: none; letter-spacing: .06em; color: var(--rust); }
+.nav-links { display: flex; gap: clamp(14px, 3vw, 36px); }
+.nav-links a { text-decoration: none; font-weight: 800; font-size: .86rem; text-transform: uppercase; }
+
+.hero-grid { flex: 1; display: grid; grid-template-columns: minmax(0, .9fr) minmax(420px, 1.1fr); align-items: center; gap: 5vw; padding: 48px 0; }
+.eyebrow { margin: 0 0 12px; color: var(--rust); text-transform: uppercase; font-weight: 900; letter-spacing: .09em; }
+h1, h2, h3, .time, .button { font-family: "Arial Black", Arial, Helvetica, sans-serif; font-weight: 900; }
+h1 { margin: 0; font-size: clamp(4.4rem, 10vw, 9.5rem); line-height: .78; text-transform: uppercase; letter-spacing: -.075em; }
+h1 span { color: var(--mustard); font-size: .68em; display: inline-block; transform: translateX(.13em); }
+.intro { max-width: 600px; font-size: clamp(1.05rem, 1.6vw, 1.35rem); margin: 30px 0; }
+.button { display: inline-block; border: 0; border-radius: 999px; padding: 14px 22px; background: var(--rust); color: white; text-decoration: none; text-transform: uppercase; font-size: .84rem; letter-spacing: .02em; }
+.button:hover { transform: translateY(-2px); }
+
+.portrait-composition { position: relative; min-height: 610px; }
+.portrait { position: absolute; display: block; object-fit: cover; border-radius: 10px; box-shadow: 0 18px 50px rgba(70,45,25,.12); }
+.portrait-one { width: 43%; left: 3%; bottom: 2%; transform: rotate(-2deg); }
+.portrait-two { width: 44%; right: 7%; top: 3%; transform: rotate(2deg); }
+.date-stamp { position: absolute; left: 45%; top: 42%; z-index: 2; background: var(--sand); color: var(--red); border-radius: 12px; padding: 22px 26px; font: 900 clamp(2rem, 4vw, 4.1rem)/.85 "Arial Black", Arial, sans-serif; text-align: center; transform: rotate(-3deg); }
+.countdown { border-top: 3px solid var(--ink); padding-top: 18px; font-weight: 900; text-transform: uppercase; letter-spacing: .04em; }
+
+.section { padding: clamp(72px, 10vw, 140px) clamp(22px, 7vw, 110px); }
+.section-heading { display: flex; align-items: end; justify-content: space-between; margin-bottom: 42px; }
+h2 { margin: 0; font-size: clamp(3rem, 7vw, 7.4rem); line-height: .9; text-transform: uppercase; letter-spacing: -.06em; }
+
+.programme { background: var(--paper); }
+.timeline { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.event-card { min-height: 360px; padding: 28px; border-radius: var(--radius); background: var(--sand); display: flex; flex-direction: column; align-items: flex-start; }
+.event-card.light { background: var(--mustard); }
+.time { font-size: 2rem; margin: 0 0 34px; }
+.event-card h3 { margin: 0 0 14px; color: var(--red); text-transform: uppercase; font-size: clamp(1.5rem, 2.4vw, 2.4rem); line-height: 1; }
+.event-card p:not(.time) { font-weight: 800; text-transform: uppercase; font-size: 1.1rem; }
+.event-card a { margin-top: auto; font-weight: 900; text-transform: uppercase; font-size: .78rem; }
+
+.places { display: grid; grid-template-columns: 1.05fr .95fr; align-items: stretch; gap: clamp(30px, 6vw, 90px); }
+.map-wrap img { width: 100%; height: 100%; min-height: 600px; object-fit: cover; border-radius: var(--radius); filter: saturate(.88) contrast(.96); }
+.places-copy { display: flex; flex-direction: column; justify-content: center; }
+.places-copy > p:not(.eyebrow) { max-width: 560px; font-size: 1.2rem; }
+.small-note { margin-top: 30px; padding: 22px; border: 3px solid var(--ink); font-weight: 700; }
+
+.rsvp { background: var(--rust); color: white; display: grid; grid-template-columns: 1.15fr .85fr; gap: 70px; align-items: center; }
+.rsvp .eyebrow { color: var(--mustard); }
+.rsvp-box { background: var(--cream); color: var(--ink); padding: clamp(28px, 4vw, 54px); border-radius: var(--radius); font-size: 1.15rem; }
+.button.dark { background: var(--ink); margin: 12px 0 24px; }
+.contact { font-size: .92rem; }
+footer { background: var(--ink); color: var(--cream); padding: 24px; text-align: center; font-weight: 900; text-transform: uppercase; }
+
+@media (max-width: 900px) {
+  .nav-links { display: none; }
+  .hero-grid { grid-template-columns: 1fr; padding-top: 60px; }
+  .portrait-composition { min-height: 520px; }
+  .timeline { grid-template-columns: 1fr; }
+  .event-card { min-height: 270px; }
+  .places, .rsvp { grid-template-columns: 1fr; }
+  .map-wrap img { min-height: 460px; }
+}
+
+@media (max-width: 560px) {
+  .hero { min-height: auto; }
+  h1 { font-size: 4.2rem; }
+  .portrait-composition { min-height: 410px; }
+  .portrait-one { width: 48%; left: 0; }
+  .portrait-two { width: 49%; right: 0; }
+  .date-stamp { left: 40%; top: 43%; padding: 15px 18px; }
+  .section { padding-left: 20px; padding-right: 20px; }
+  .map-wrap img { min-height: 360px; }
+}
+
+
+.gift {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.china-map {
+    margin: 0;
+    text-align: center;
+}
+
+.china-map img {
+    width: 100%;
+    max-width: 520px;
+    border: 10px solid #f8f5ed;
+    box-shadow: 0 18px 45px rgba(0,0,0,.12);
+    border-radius: 6px;
+    transform: rotate(-1.5deg);
+    transition: transform .3s ease;
+}
+
+.china-map img:hover {
+    transform: rotate(0deg) scale(1.02);
+}
+
+.china-map figcaption {
+    margin-top: 1rem;
+    font-style: italic;
+    color: #7a6b5a;
+    letter-spacing: .05em;
+}
+
+.iban{
+    margin-top:1.5rem;
+    padding:1rem 1.2rem;
+    background:#f8f5ed;
+    border-left:4px solid #b89b5e;
+    font-family: "Courier New", monospace;
+    line-height:1.8;
+}
+
+@media (max-width: 850px){
+    .gift{
+        grid-template-columns:1fr;
+    }
+
+    .china-map{
+        order:-1;
+    }
+}
+
+footer {
+    text-align: center;
+    padding: 2.5rem 1rem;
+}
+
+footer p {
+    margin: 0;
+}
+
+footer .credits {
+    margin-top: 0.5rem;
+    font-size: 0.82rem;
+    color: #8c8377;
+    font-weight: 300;
+    letter-spacing: 0.03em;
+}
