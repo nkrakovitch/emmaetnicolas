@@ -91,6 +91,7 @@ footer { background: var(--ink); color: var(--cream); padding: 24px; text-align:
 
 
 .gift {
+    background-color: #f4efe4;
     display: grid;
     grid-template-columns: 1.1fr 0.9fr;
     gap: 4rem;
