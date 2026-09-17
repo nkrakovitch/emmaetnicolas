@@ -8,6 +8,7 @@
   <meta name="robots" content="noindex, nofollow">
   <title>Emma & Nicolas — 18 septembre 2026</title>
   <link rel="stylesheet" href="style.css">
+  <script src="matches.js" defer></script>
   <script src="script.js" defer></script>
 </head>
 <body>
@@ -17,6 +18,7 @@
       <div class="nav-links">
         <a href="#programme">Programme</a>
         <a href="#lieux">Lieux</a>
+        <a href="#jeu">Jeu</a>
         <a href="#cagnotte">Cagnotte</a>
       </div>
     </nav>
@@ -85,6 +87,55 @@ ou <strong>Corentin Cariou</strong> (ligne <span class="metro metro-7">7</span>)
       </div>
     </section>
 
+    <section class="section match-game" id="jeu">
+      <div class="match-game-copy">
+        <p class="eyebrow">Le jeu des rencontres</p>
+        <h2>Trouvez votre duo</h2>
+        <p class="match-game-intro">Inscrivez votre nom et découvrez le nom de votre duo.</p>
+
+        <form class="match-form" id="match-form" autocomplete="off">
+          <label for="guest-search">Ton nom</label>
+          <div class="guest-combobox">
+            <input
+              id="guest-search"
+              name="guest"
+              type="text"
+              placeholder="Commence à écrire ton nom…"
+              role="combobox"
+              aria-autocomplete="list"
+              aria-expanded="false"
+              aria-controls="guest-suggestions"
+              aria-activedescendant=""
+            >
+            <div class="guest-suggestions" id="guest-suggestions" role="listbox" hidden></div>
+          </div>
+          <button class="button match-button" type="submit">Découvrir mon duo</button>
+          <p class="match-error" id="match-error" role="alert" aria-live="polite"></p>
+        </form>
+      </div>
+
+      <div class="match-stage" id="match-stage" aria-live="polite">
+        <div class="match-pair" id="match-pair" aria-hidden="true">
+          <figure class="match-card match-card-one">
+            <img src="assets/portrait-3.jpg" alt="">
+          </figure>
+          <figure class="match-card match-card-two">
+            <img src="assets/portrait-4.jpg" alt="">
+          </figure>
+        </div>
+
+        <div class="mystery-card" id="mystery-card" hidden>
+          <div class="mystery-face" aria-hidden="true">
+            <span>?</span>
+          </div>
+          <p class="mystery-kicker">Votre duo mystère</p>
+          <p class="mystery-name" id="mystery-name"></p>
+          <p class="mystery-mission">Essayez de prendre une photo ensemble !</p>
+          <button class="match-reset" id="match-reset" type="button">Rejouer</button>
+        </div>
+      </div>
+    </section>
+
 <section class="section gift" id="cagnotte">
   <div class="gift-copy">
     <p class="eyebrow">Cagnotte de voyage</p>
@@ -111,11 +162,6 @@ ou <strong>Corentin Cariou</strong> (ligne <span class="metro metro-7">7</span>)
       <strong>IBAN</strong><br>
       FR76&nbsp;1807&nbsp;9753&nbsp;1904&nbsp;1966&nbsp;2004&nbsp;040
     </p>
-
-     <p>
-      Nous mettrons aussi une <strong>enveloppe</strong> à disposition pour les amis des espèces.
-    </p>
-    
   </div>
 
   <figure class="china-map">

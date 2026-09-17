@@ -187,3 +187,214 @@ footer .credits {
 }
 
 
+
+/* --- Jeu des rencontres --- */
+.match-game {
+    background: var(--mustard);
+    display: grid;
+    grid-template-columns: minmax(0, .95fr) minmax(420px, 1.05fr);
+    gap: clamp(42px, 7vw, 110px);
+    align-items: center;
+    overflow: hidden;
+}
+
+.match-game .eyebrow { color: var(--rust); }
+.match-game-copy { max-width: 680px; }
+.match-game-intro {
+    max-width: 620px;
+    margin: 26px 0 34px;
+    font-size: clamp(1.05rem, 1.5vw, 1.28rem);
+}
+
+.match-form label {
+    display: block;
+    margin-bottom: 9px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+}
+
+.guest-combobox { position: relative; max-width: 560px; }
+#guest-search {
+    width: 100%;
+    min-height: 58px;
+    padding: 14px 18px;
+    border: 3px solid var(--ink);
+    border-radius: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font: 700 1rem/1.2 Arial, Helvetica, sans-serif;
+    outline: none;
+}
+#guest-search:focus { box-shadow: 6px 6px 0 var(--rust); }
+
+.guest-suggestions {
+    position: absolute;
+    z-index: 20;
+    left: 0;
+    right: 0;
+    top: calc(100% + 5px);
+    max-height: 240px;
+    overflow-y: auto;
+    border: 3px solid var(--ink);
+    background: var(--paper);
+    box-shadow: 8px 8px 0 rgba(17,16,14,.18);
+}
+.guest-suggestion {
+    width: 100%;
+    padding: 12px 15px;
+    border: 0;
+    border-bottom: 1px solid rgba(17,16,14,.18);
+    background: transparent;
+    color: var(--ink);
+    text-align: left;
+    font: 800 .98rem/1.25 Arial, Helvetica, sans-serif;
+    cursor: pointer;
+}
+.guest-suggestion:last-child { border-bottom: 0; }
+.guest-suggestion:hover,
+.guest-suggestion.is-active { background: var(--sand); }
+
+.match-button { margin-top: 18px; cursor: pointer; }
+.match-button:disabled { opacity: .58; cursor: wait; }
+.match-error {
+    min-height: 1.45em;
+    margin: 12px 0 0;
+    font-weight: 800;
+    color: var(--rust);
+}
+
+.match-stage {
+    position: relative;
+    min-height: 600px;
+    display: grid;
+    place-items: center;
+    perspective: 1200px;
+}
+.match-pair {
+    position: relative;
+    width: min(100%, 610px);
+    height: 555px;
+}
+.match-card {
+    position: absolute;
+    width: 47%;
+    aspect-ratio: 3 / 4;
+    margin: 0;
+    overflow: hidden;
+    border-radius: 10px;
+    background: var(--paper);
+    box-shadow: 0 24px 60px rgba(70,45,25,.20);
+    transform-origin: center;
+    backface-visibility: hidden;
+}
+.match-card img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.match-card-one { left: 3%; bottom: 1%; transform: rotate(-6deg); }
+.match-card-two { right: 3%; top: 1%; transform: rotate(6deg); }
+
+.match-stage.is-searching .match-card-one {
+    animation: cardSpinLeft 1.45s cubic-bezier(.55,.05,.2,1) forwards;
+}
+.match-stage.is-searching .match-card-two {
+    animation: cardSpinRight 1.45s .08s cubic-bezier(.55,.05,.2,1) forwards;
+}
+
+@keyframes cardSpinLeft {
+    0% { transform: rotate(-6deg) rotateY(0) scale(1); opacity: 1; }
+    55% { transform: rotate(-20deg) rotateY(540deg) scale(.96); opacity: 1; }
+    100% { transform: translateX(-48%) rotate(-28deg) rotateY(900deg) scale(.72); opacity: 0; }
+}
+@keyframes cardSpinRight {
+    0% { transform: rotate(6deg) rotateY(0) scale(1); opacity: 1; }
+    55% { transform: rotate(20deg) rotateY(-540deg) scale(.96); opacity: 1; }
+    100% { transform: translateX(48%) rotate(28deg) rotateY(-900deg) scale(.72); opacity: 0; }
+}
+
+.mystery-card {
+    width: min(82%, 360px);
+    min-height: 490px;
+    padding: 30px 25px 26px;
+    border-radius: 10px;
+    background: var(--paper);
+    box-shadow: 0 28px 70px rgba(70,45,25,.25);
+    text-align: center;
+    transform: rotate(-2deg);
+}
+.mystery-card.is-revealed { animation: mysteryReveal .72s cubic-bezier(.2,.8,.2,1) both; }
+@keyframes mysteryReveal {
+    0% { opacity: 0; transform: translateY(22px) rotateY(90deg) rotate(-2deg) scale(.86); }
+    100% { opacity: 1; transform: translateY(0) rotateY(0) rotate(-2deg) scale(1); }
+}
+
+.mystery-face {
+    width: 100%;
+    aspect-ratio: 1 / 1.08;
+    display: grid;
+    place-items: center;
+    margin-bottom: 26px;
+    border-radius: 6px;
+    overflow: hidden;
+    background:
+      radial-gradient(circle at 50% 32%, var(--sand) 0 18%, transparent 18.5%),
+      radial-gradient(ellipse at 50% 104%, var(--rust) 0 46%, transparent 46.5%),
+      var(--mustard);
+    filter: saturate(.88);
+}
+.mystery-face span {
+    display: grid;
+    place-items: center;
+    width: 82px;
+    height: 82px;
+    border-radius: 50%;
+    background: var(--paper);
+    color: var(--red);
+    font: 900 3.6rem/1 "Arial Black", Arial, sans-serif;
+    box-shadow: 0 9px 24px rgba(17,16,14,.13);
+}
+.mystery-kicker {
+    margin: 0 0 8px;
+    color: var(--rust);
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    font-size: .78rem;
+}
+.mystery-name {
+    margin: 0;
+    color: var(--ink);
+    font: 900 clamp(1.9rem, 4vw, 3rem)/.95 "Arial Black", Arial, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: -.04em;
+}
+.mystery-mission { margin: 18px auto 0; max-width: 280px; font-weight: 700; }
+.match-reset {
+    margin-top: 22px;
+    padding: 0;
+    border: 0;
+    border-bottom: 2px solid currentColor;
+    background: transparent;
+    color: var(--rust);
+    font-weight: 900;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+@media (max-width: 900px) {
+    .match-game { grid-template-columns: 1fr; }
+    .match-game-copy { max-width: none; }
+    .match-stage { min-height: 530px; }
+    .match-pair { height: 500px; max-width: 560px; }
+}
+
+@media (max-width: 560px) {
+    .match-stage { min-height: 455px; }
+    .match-pair { height: 410px; }
+    .match-card { width: 50%; }
+    .mystery-card { width: min(92%, 340px); min-height: 430px; padding: 24px 20px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .match-stage.is-searching .match-card-one,
+    .match-stage.is-searching .match-card-two,
+    .mystery-card.is-revealed { animation-duration: .01ms; animation-delay: 0ms; }
+}
